@@ -27,6 +27,36 @@ class _AuthGateState extends State<AuthGate> {
   String error = '';
   String verificationId = '';
 
+  GoogleSignInAccount? _currentUser;
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+      scopes: [],
+      clientId:
+          '740150444954-93f5kah5vqa1ogts10vmgrqsf2ekgu8g.apps.googleusercontent.com');
+
+  Future<void> _handleSignIn() async {
+    setIsLoading();
+    try {
+      await _googleSignIn.signIn();
+      _currentUser = _googleSignIn.currentUser;
+      final googleAuth = await _currentUser?.authentication;
+
+      if (googleAuth != null) {
+        // Create a new credential
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+
+        // Once signed in, return the UserCredential
+        await _auth.signInWithCredential(credential);
+      }
+    } catch (error) {
+      print(error);
+    }
+    setIsLoading();
+  }
+
   bool isLoading = false;
 
   void setIsLoading() {
@@ -42,11 +72,11 @@ class _AuthGateState extends State<AuthGate> {
     super.initState();
     if (kIsWeb) {
       authButtons = {
-        Buttons.Google: _signInWithGoogle,
+        Buttons.Google: _handleSignIn,
       };
     } else {
       authButtons = {
-        if (!Platform.isMacOS) Buttons.Google: _signInWithGoogle,
+        if (!Platform.isMacOS) Buttons.Google: _handleSignIn,
       };
     }
   }
@@ -176,6 +206,4 @@ String getUID() {
   return _result;
 }
 
-
-
-//More sign in methods can be added down the line but I felt that for the first version Google Account sign in was the best option. 
+//More sign in methods can be added down the line but I felt that for the first version Google Account sign in was the best option.

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/new_design/Design%20Elements/small_elements.dart';
 import 'package:test_project/new_design/Pages/Focus%20Timer/big_clock_time_picker_widget.dart';
@@ -39,21 +38,6 @@ String timeFormatter(int timeRemaining) {
   }
   return formattedMinutes + ':' + formattedSeconds;
 }
-
-// List<String> audioNames = [
-//   'Rain',
-//   'Thunder',
-//   'Rumbling Thunder',
-//   'Waves',
-//   'Silence'
-// ];
-// List<String> audioFileLocations = [
-//   'rain.mp3',
-//   'thunder.mp3',
-//   'rumbling_thunder.mp3',
-//   'waves.mp3',
-//   ''
-// ];
 
 Map map = {};
 

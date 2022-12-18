@@ -46,7 +46,6 @@ dependencies:
   google_sign_in: ^5.2.4
   google_sign_in_dartio: ^0.2.0
   flutter_signin_button: ^2.0.0
-  audioplayers: ^0.20.1
 
 dev_dependencies:
   flutter_test:

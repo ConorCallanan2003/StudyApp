@@ -1,13 +1,9 @@
-import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:test_project/new_design/homepage.dart';
 import 'package:test_project/services/auth.dart';
-import 'package:test_project/services/services.dart';
 
 import 'firebase_options.dart';
 
@@ -33,11 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        fontFamily: kIsWeb && window.navigator.userAgent.contains('OS 15_')
-            ? '-apple-system'
-            : null,
-      ),
+      theme: ThemeData(),
       debugShowCheckedModeBanner: false,
       title: 'School Planner',
       home: StreamBuilder<User?>(
