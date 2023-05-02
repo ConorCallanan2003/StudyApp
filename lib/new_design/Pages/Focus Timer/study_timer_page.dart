@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/new_design/Design%20Elements/small_elements.dart';
 import 'package:test_project/new_design/Pages/Focus%20Timer/big_clock_time_picker_widget.dart';
